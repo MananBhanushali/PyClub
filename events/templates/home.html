@@ -5,6 +5,16 @@
     <title>PyClub</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <center>
+        <h1>Hello {{ name }}! Events For {{ month }} {{ year }}</h1>
+
+        As Of {{ time }}
+
+        <br/><br/>
+        {{ cal|safe }}
+        <br/><br/><br/><br/>
+        Copyright (C) {{ current_year }}
+    </center>
+
 </body>
 </html>
