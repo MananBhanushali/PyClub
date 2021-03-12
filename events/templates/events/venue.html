@@ -1,0 +1,26 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+<style>
+    td a {
+      text-decoration: none;
+      color: #000000;
+    }
+</style>
+
+    <h1>Venues...</h1>
+
+    <br/>
+
+    <table class="table table-hover table-bordered">
+        {% for venue in venue_list %}
+
+            <tr><td><a href="{% url 'show-venue' venue.id %}">
+                <div>{{ venue }}</div>
+            </a></td></tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}
