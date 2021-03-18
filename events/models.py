@@ -26,7 +26,6 @@ class MyClubUser(models.Model):
 class Event(models.Model):
     name = models.CharField("Event Name", max_length=120)
     event_date = models.DateTimeField("Event Date")
-    # venue = models.CharField(max_length=120)
     venue = models.ForeignKey(Venue, blank=True, null=True, on_delete=models.CASCADE)
     manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     description = models.TextField(blank=True)

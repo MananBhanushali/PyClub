@@ -7,18 +7,25 @@ from .forms import VenueForm
 from django.http import HttpResponseRedirect
 
 
-def search_venues(request):
+def show_event(request, event_id):
+    event = Event.objects.get(pk=event_id)
+
+    return render(request, 'events/show_event.html',
+                  {'event': event})
+
+
+def search(request):
     if request.method == "POST":
         searched = request.POST["search_box"]
         venues = Venue.objects.filter(name__contains=searched)
         events = Event.objects.filter(name__contains=searched)
 
-        return render(request, 'events/search_venues.html',
+        return render(request, 'events/search.html',
                       {"searched": searched,
                        "venues": venues,
                        "events": events})
     else:
-        return render(request, 'events/search_venues.html', {})
+        return render(request, 'events/search.html', {})
 
 
 def show_venue(request, venue_id):

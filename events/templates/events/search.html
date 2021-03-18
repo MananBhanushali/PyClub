@@ -11,12 +11,12 @@
             {% endfor %}
 
             {% for event in events %}
-                <a href="">{{ event }}</a><br/>
+                <a href="{% url 'show-event' event.id %}">{{ event }}</a><br/>
             {% endfor %}
 
 
         {% else %}
-            <h1>Hey You Forgot to Search For A Venue...</h1>
+            <h1>Hey You Forgot to Search For A Venue or Event...</h1>
         {% endif %}
     </center>
 {% endblock %}

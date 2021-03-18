@@ -1,0 +1,26 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+
+<div class="card">
+  <div class="card-header">
+    Venue
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Name: {{ event }}</h5>
+    <p class="card-text">
+        <strong>Date: </strong>{{ event.event_date }}<br/>
+        <strong>Venue Website: </strong><a href="{{ event.venue.web }}">{{ event.venue.web }}</a><br/>
+        <strong>Manager: </strong>{{ event.manager }}<br/>
+        <strong>Description: </strong>{{ event.description }}<br/>
+        <strong>Attendees:</strong><br/>
+            {% for user in event.attendees.all %}
+                {{ user }}<br/>
+            {% endfor %}
+    </p>
+  </div>
+</div>
+
+
+{% endblock %}
