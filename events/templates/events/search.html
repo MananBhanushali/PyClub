@@ -1,22 +1,53 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
-    <center>
-        {% if searched %}
-            <h1>You Searched For '{{ searched }}'</h1>
-            <br/>
+    {% if searched %}
+        <h1>You Searched For '{{ searched }}'</h1>
+        <br/>
 
-            {% for venue in venues %}
-                <a href="{% url 'show-venue' venue.id %}">{{ venue }}</a><br/>
-            {% endfor %}
+        {% for venue in venues %}
+            <div class="card">
+              <div class="card-header">
+                Venue
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Name: {{ venue }}</h5>
+                <p class="card-text">
+                    <strong>Address: </strong>{{ venue.address }}<br/>
+                    <strong>Zip Code: </strong>{{ venue.zip_code }}<br/>
+                    <strong>Phone: </strong>{{ venue.phone }}<br/>
+                    <strong>Email Address: </strong>{{ venue.email_address }}<br/>
+                    <strong>Website: </strong><a href="{{ venue.web }}">{{ venue.web }}</a><br/>
+                </p>
+              </div>
+            </div>
+        {% endfor %}
 
-            {% for event in events %}
-                <a href="{% url 'show-event' event.id %}">{{ event }}</a><br/>
-            {% endfor %}
+        <br/>
+
+        {% for event in events %}
+            <div class="card">
+              <div class="card-header">
+                Event
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Name: {{ event }}</h5>
+                <p class="card-text">
+                    <strong>Date: </strong>{{ event.event_date }}<br/>
+                    <strong>Venue Website: </strong><a href="{{ event.venue.web }}">{{ event.venue.web }}</a><br/>
+                    <strong>Manager: </strong>{{ event.manager }}<br/>
+                    <strong>Description: </strong>{{ event.description }}<br/>
+                    <strong>Attendees:</strong><br/>
+                        {% for user in event.attendees.all %}
+                            {{ user }}<br/>
+                        {% endfor %}
+                </p>
+              </div>
+            </div>
+        {% endfor %}
 
 
-        {% else %}
-            <h1>Hey You Forgot to Search For A Venue or Event...</h1>
-        {% endif %}
-    </center>
+    {% else %}
+        <h1>Hey You Forgot to Search For A Venue or Event...</h1>
+    {% endif %}
 {% endblock %}
