@@ -16,9 +16,15 @@
     <table class="table table-hover table-bordered">
         {% for venue in venue_list %}
 
-            <tr><td><a href="{% url 'show-venue' venue.id %}">
+            <tr>
+                <td><a href="{% url 'show-venue' venue.id %}">
                 <div>{{ venue }}</div>
-            </a></td></tr>
+                </a></td>
+
+                <td align="right"><a href="{% url 'update-venue' venue.id %}" class="btn btn-outline-dark btn-sm">
+                <div>Update</div>
+                </a></td>
+            </tr>
 
         {% endfor %}
     </table>
