@@ -2,6 +2,13 @@
 
 {% block content %}
 
+<style>
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+</style>
+
 <h1>Events</h1>
 
 <br/>
@@ -26,6 +33,12 @@
             {% endfor %}
     </p>
   </div>
+  <div class="card-footer text-muted">
+      <a href="{% url 'update-event' event.id %}" class="btn btn-outline-dark btn-sm">
+          <div>Update Event</div>
+      </a>
+  </div>
+
 </div>
 
 
